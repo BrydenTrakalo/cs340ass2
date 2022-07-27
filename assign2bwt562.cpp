@@ -380,10 +380,10 @@ int main()
 		cout << "Actions: (b)-Build heap (i)-insert (fmax)-find max (fmin)-find min (dmax)-delete max (dmin)-delete min (q)-end program" << endl;
 		cin >> choice;
 		if (choice == "b") {
-			cout << "Please enter a list of numbers seperated by spaces, followed by a 'e'" << endl;
-			cout << "Ex. 15 30 2 7 10 5 9 6 18 e" << endl;
+			cout << "Please enter a list of numbers seperated by spaces, followed by a 's'" << endl;
+			cout << "Ex. 15 30 2 7 10 5 9 6 18 s" << endl;
 			cin >> choice;
-			while (choice != "e") {
+			while (choice != "s") {
 				toInsert = 0;
 				for (int j = 0; j < choice.length(); j++) {
 					toInsert += (int)(choice.at(j) - 48) * pow(10, choice.length()-j-1);
