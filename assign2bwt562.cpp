@@ -388,6 +388,7 @@ int main()
 				for (int j = 0; j < choice.length(); j++) {
 					toInsert += (int)(choice.at(j) - 48) * pow(10, choice.length()-j-1);
 				}
+				toInsert = atoi(choice.c_str());
 				inputHeap->insertHeap(toInsert);
 				cin >> choice;
 			}
