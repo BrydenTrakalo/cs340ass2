@@ -20,8 +20,9 @@ public:
 	int maxSize;
 
 	minMaxHeap(int mSize) {
-		heap = new int[mSize];
-		for (int i = 0; i < mSize; i++) {
+		maxSize = mSize;
+		heap = new int[maxSize];
+		for (int i = 0; i < maxSize; i++) {
 			heap[i] = NULL;
 		}
 		numElements = 0;
