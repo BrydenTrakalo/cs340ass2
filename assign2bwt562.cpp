@@ -26,7 +26,6 @@ public:
 			heap[i] = NULL;
 		}
 		numElements = 0;
-		cout << "Built with size " << mSize << endl;
 	}
 	~minMaxHeap() {
 		delete heap;
