@@ -2,7 +2,7 @@
 //	./a.out
 //
 // User input is required to run the program. Follow the instructions given to operate program. 
-// First build with a list of numbers, then perform operations on the heap
+// First build with a list of numbers (or insert a few numbers), then perform operations on the heap
 // Use 'q' to quit
 
 #include <iostream>
@@ -275,22 +275,23 @@ public:
 	}
 
 	// Trickles a newly placed element down the heap to maintain heap properties
+	// Checks if the hole 
 	void trickleDown(int hole) {
 		bool isEven = isDepthEven(hole);
 		bool swap1 = false;
 		bool swap2 = false;
 		int nextCheck = getLeftChild(hole);
 		if (isEven) {
-			if (nextCheck > numElements) { //Our element should be smaller than its children, if not switch
-				return;
+			// Check left node, on even level so swap if hole is greater than its child
+			if (nextCheck > numElements) { 
+				return;	//If this position doesnt exist
 			}
-			if (heap[hole] > heap[nextCheck]) {	//
+			if (heap[hole] > heap[nextCheck]) {
 				swap1 = true;
 			}
-			//Checkng right node
+			// Check right node
 			nextCheck = getRightChild(hole);
 			if (nextCheck > numElements) {
-				//weve checked the last element and can stop
 				return;
 			}
 			if (heap[hole] > heap[nextCheck]) {
@@ -370,24 +371,23 @@ int main()
 	string choice = "";
 	int toInsert = 0;
 
-	cout << "Welcome! please input the maximum # of elements in the heap: ";
+	cout << "Welcome! Please input the maximum # of elements in the heap: ";
 	cin >> maxHeapSize;
 	cout << endl;
-	cout << "The max size of hap is " << maxHeapSize << endl;
+	cout << "The max size of heap is " << maxHeapSize << endl;
 	minMaxHeap *inputHeap = new minMaxHeap(maxHeapSize);
 	while (!quit) {
 		cout << "Actions: (b)-Build heap (i)-insert (fmax)-find max (fmin)-find min (dmax)-delete max (dmin)-delete min (q)-end program" << endl;
 		cin >> choice;
 		if (choice == "b") {
-			cout << "Please enter a list of numbers seperated by spaces, followed by a 's'" << endl;
-			cout << "Ex. 30 26 25 22 21 20 18 16 14 12 10 5 s" << endl;
+			cout << "Please enter a list of numbers seperated by spaces, followed by a 'e'" << endl;
+			cout << "Ex. 15 30 2 7 10 5 9 6 18 e" << endl;
 			cin >> choice;
-			while (choice != "s") {
+			while (choice != "e") {
 				toInsert = 0;
 				for (int j = 0; j < choice.length(); j++) {
 					toInsert += (int)(choice.at(j) - 48) * pow(10, choice.length()-j-1);
 				}
-				//toInsert = atoi(choice.c_str());
 				inputHeap->insertHeap(toInsert);
 				cin >> choice;
 			}
@@ -397,9 +397,6 @@ int main()
 			cin >> choice;
 			toInsert = 0;
 			for (int j = 0; j < choice.length(); j++) {
-				//cout << "looking at " << ((int)choice.at(j) - 48) << " j is " << j << endl;
-				//cout << "which is " << choice.at(j) - 48 << endl;
-				//cout << "changing to " << ((int)choice.at(j) - 48) * pow(10, choice.length() - j-1) << " by multipying by " << pow(10, choice.length() - j-1) << endl;
 				toInsert += (((int)choice.at(j) - 48) * pow(10, choice.length() - j-1));
 			}
 			inputHeap->insertHeap(toInsert);
@@ -430,4 +427,3 @@ int main()
 	delete inputHeap;
 	return 0;
 }
-
