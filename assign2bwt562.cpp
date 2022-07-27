@@ -104,7 +104,7 @@ public:
 	//Creates a hole to insert the new element into, then performs swaps so that the minma heap properties are not broken
 	void insertHeap(int value) {
 		if ((numElements + 1) > maxSize) {
-			cout << "Heap has reached max size, cannot insert" << endl;
+			cout << "Heap has reached max size, cannot insert, there are " << numElements << " and max size is " << maxSize << endl;
 			return;
 		}
 		int hole;
